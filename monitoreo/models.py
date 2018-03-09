@@ -1,6 +1,7 @@
 #-*- coding:utf-8 -*-
 from django.db import models
 import os
+from django.core.urlresolvers import reverse
 
 # opciones de sensor.
 SENSOR_CHOICES =(
@@ -26,6 +27,7 @@ class medicion(models.Model):
 		verbose_name_plural = "mediciones"
 #creamos el modelo para el sensor
 class sensor(models.Model):
+	#asignar un campo nombre para cada sensor diferente#
 	estado = models.BooleanField(default=True,verbose_name ='encendio o apagado')
 	variable = models.CharField(max_length=150, choices = SENSOR_CHOICES )
 	unidades = models.CharField(max_length=50, choices = UNIDADES_CHOICES )
@@ -41,6 +43,7 @@ class sensor(models.Model):
 
 # creamos el modelo de dispositivo
 class dispositivo(models.Model):
+	slug = models.SlugField(max_length=200, unique=True)
 	Zona = models.CharField(max_length=150, verbose_name ='Zona Bogotá')
 	Responsable = models.CharField(max_length=150)
 	coordX = models.FloatField(verbose_name ='Coordenada X')
@@ -52,7 +55,8 @@ class dispositivo(models.Model):
 
 	def __unicode__(self):
 		return  os.path.basename(self.Zona)
-
+	def get_absolute_url(self):
+		return reverse("entry_detail", kwargs={"slug": self.slug})
 	class Meta:
 		verbose_name = "Dispositivo"
 		verbose_name_plural = "Dispositivos"

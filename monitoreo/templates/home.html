@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dispositivos</title>
+</head>
+<body>
+  <h1>SISTEMA DE MONITOREO</h1>
+  <b>Dispositivos Disponibles:</b>
+    <table border="0" cellspacing="0" cellpadding="5"
+    style="padding-left:20px">
+      <tr>
+        <th>Zona</th>
+          <th>Respponsable</th> 
+          <th>Coordenada X</th>
+          <th>Coordenada Y</th>
+          <th>Sensores disponible</th>
+      </tr>
+    {% for object in object_list %}
+            
+      <tr>
+      <td>
+        <font style="font-family:monospace">
+      {{object.Zona}}
+        </font>
+      </td>
+      <td><font style="font-family:monospace">
+      {{object.Responsable}}</font></td>
+      
+      <td><font style="font-family:monospace">
+      {{object.coordX}}</font></td>
+      
+      <td><font style="font-family:monospace">
+      {{object.coordY}}</font></td>
+      
+      <td>
+      <a href="{% url "dispositivo-detail" object.slug %}">
+      sensores
+      </a>
+      </td>
+      </tr>
+    {% endfor %}
+    </table>
+
+</body>
+</html>
