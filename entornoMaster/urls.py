@@ -23,3 +23,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^dispositivos/', include('monitoreo.urls')),
 ]
+
+
