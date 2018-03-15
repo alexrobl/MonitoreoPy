@@ -12,7 +12,7 @@ SENSOR_CHOICES =(
 	)
 UNIDADES_CHOICES =(
 	('ppm', 'ppm'),
-	('deciveles', 'deciveles'),
+	('decibeles', 'decibeles'),
 	('Grados Centigrados', 'Grados Centigrados'),
 	)
 class medicion(models.Model):

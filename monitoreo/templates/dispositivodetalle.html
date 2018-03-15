@@ -1,15 +1,55 @@
-{% block container %}
-	  <div class="section">
-	  	<section class="imagen-aplicaciones">
-		</section>
-	    <div class="row">
-	      <div class="col s12">
+{%extends 'Layout.html'%}
+{% block content %}
+<h3 >Historico Mediciones {{ object.Zona }} </h3>
 
-	        <h2 class="header center  teal-text text- darken-2">{{ object.Zona }}</h2>
-	        {% for sensor in object.Sensores.all %}
-	        	<h3>{{sensor.variable}} </h3>
-	        	<h3>{{sensor.medicion.all}} </h3>
-	        {% endfor %}
-	      </div>
-	    </div>
-{% endblock container %}
+
+
+<div class="row">
+	<div class="col-md-5">
+		 {% for sensor in object.Sensores.all %}
+		<div class="box-header with-border">
+ <h2 class="box-title" >{{sensor.variable}}</h2>
+</div>
+        <div class="box-body">
+             <table class="table table-bordered">
+          <tr>
+			<th style="width:10px">#</th>
+          	<th style="width:400px">Fecha</th>
+          	<th style="width:10px" >valor</th>
+		  	<th style="width:50px">unidad</th>
+          </tr>
+				 {% for medicion in sensor.medicion.all%}
+ 				  <tr>
+					  <td>1</td>
+					 <td>{{medicion.fecha}}</td>
+					  <td>
+						  {%if medicion.captura < 0 %}
+						  <span class="badge bg-blue"> {{medicion.captura}}</span>
+						  {%else%}
+							   <span class="badge bg-green"> {{medicion.captura}}</span>
+							  {%endif%}
+
+						  </td>
+					 <td>{{sensor.unidades}}</td>
+				 </tr>
+ 				 {% endfor %}
+
+			</table>
+
+              <div class="box-footer clearfix">
+              <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="#">&laquo;</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">&raquo;</a></li>
+              </ul>
+              </div>
+			</div>
+
+
+{% endfor %}
+    </div>
+
+</div>
+{% endblock %}

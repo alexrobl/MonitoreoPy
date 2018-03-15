@@ -44,7 +44,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('estado', models.BooleanField(default=True, verbose_name=b'encendio o apagado')),
                 ('variable', models.CharField(max_length=150, choices=[(b'CO', b'CO'), (b'CO2', b'CO2'), (b'RUIDO', b'RUIDO'), (b'TEMPERATURA', b'TEMPERATURA')])),
-                ('unidades', models.CharField(max_length=50, choices=[(b'ppm', b'ppm'), (b'ppm', b'ppm'), (b'deciveles', b'deciveles'), (b'\xc2\xb0C', b'\xc2\xb0C')])),
+                ('unidades', models.CharField(max_length=50, choices=[(b'ppm', b'ppm'), (b'ppm', b'ppm'), (b'decibeles', b'decibeles'), (b'\xc2\xb0C', b'\xc2\xb0C')])),
                 ('medicion', models.ManyToManyField(to='monitoreo.medicion', null=True, verbose_name=b'mediciones', blank=True)),
             ],
             options={
