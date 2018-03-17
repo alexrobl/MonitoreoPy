@@ -23,6 +23,6 @@ B) python manage.py runserver ó manage.py runserver (se iniciara un servidor en
 
 Las url's disponibles seran:
 
-localhost:8000/dispositivos
-localhost:8000/admin (user = admin, pass = admin)
+  localhost:8000/dispositivos
+  localhost:8000/admin (user = admin, pass = admin)
 
