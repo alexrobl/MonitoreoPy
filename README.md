@@ -18,8 +18,8 @@ para correr la plataforma se debe:
    
 4. en la terminal ubicar el repositorio y ejecutar en orden:
 
-A. pip install -r requirements.txt
-B. python manage.py runserver ó manage.py runserver (se iniciara un servidor en localhost:8000)
+A) pip install -r requirements.txt
+B) python manage.py runserver ó manage.py runserver (se iniciara un servidor en localhost:8000)
 
 Las url's disponibles seran:
 
